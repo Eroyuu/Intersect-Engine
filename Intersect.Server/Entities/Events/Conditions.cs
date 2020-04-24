@@ -164,7 +164,7 @@ namespace Intersect.Server.Entities.Events
             {
                 if (player.Equipment[i] >= 0)
                 {
-                    if (ItemBase.Get(player.Items[player.Equipment[i]].ItemId).Tags.Any(x => x.Equals(condition.Tag)))
+                    if (ItemBase.Get(player.Items[player.Equipment[i]].ItemId).Tags.Contains(condition.Tag))
                     {
                         return true;
                     }
@@ -449,7 +449,7 @@ namespace Intersect.Server.Entities.Events
                     if (en.GetType() == typeof(Npc))
                     {
                         Npc npc = (Npc)en;
-                        if (npc.Base.Tags.Any(x => x.Equals(condition.Tag)))
+                        if (npc.Base.Tags.Contains(condition.Tag))
                         {
                             return true;
                         }

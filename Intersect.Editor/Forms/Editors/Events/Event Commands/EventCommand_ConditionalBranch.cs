@@ -514,7 +514,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             }
             else
             {
-                eqpTags = NpcBase.ItemPairs.SelectMany(x => ItemBase.Get(x.Key).Tags).Distinct().OrderBy(t => t).ToList();
+                eqpTags = NpcBase.ItemPairs.SelectMany(x => NpcBase.Get(x.Key).Tags).Distinct().OrderBy(t => t).ToList();
             }
 
             cmbEquippedItemTag.Items.AddRange(eqpTags.OrderBy(t => t).ToArray());

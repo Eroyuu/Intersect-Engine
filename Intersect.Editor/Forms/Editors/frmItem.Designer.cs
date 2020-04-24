@@ -370,6 +370,7 @@ namespace Intersect.Editor.Forms.Editors
             this.txtTag.Name = "txtTag";
             this.txtTag.Size = new System.Drawing.Size(145, 20);
             this.txtTag.TabIndex = 50;
+            this.txtTag.TextChanged += new System.EventHandler(this.txtTag_TextChanged);
             // 
             // btnAddFolder
             // 

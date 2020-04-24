@@ -72,17 +72,6 @@ namespace Intersect.Editor.Forms.Editors
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            try
-            {
-                mEditorItem.Tags.AddRange(txtTag.Text.Split(';'));
-            }
-            catch
-            {
-                MessageBox.Show(Strings.ItemEditor.tagparseerror, Strings.ItemEditor.tagparseerrortitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             //Send Changed items
             foreach (var item in mChanged)
             {
@@ -505,6 +494,20 @@ namespace Intersect.Editor.Forms.Editors
         private void txtDesc_TextChanged(object sender, EventArgs e)
         {
             mEditorItem.Description = txtDesc.Text;
+        }
+
+        private void txtTag_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                mEditorItem.Tags.Clear();
+                mEditorItem.Tags.AddRange(txtTag.Text.Split(';'));
+            }
+            catch
+            {
+                MessageBox.Show(Strings.ItemEditor.tagparseerror, Strings.ItemEditor.tagparseerrortitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
 
         private void cmbEquipmentSlot_SelectedIndexChanged(object sender, EventArgs e)
