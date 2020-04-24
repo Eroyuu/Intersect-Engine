@@ -190,7 +190,16 @@ namespace Intersect.GameObjects
 
         public string Sprite { get; set; } = "";
 
-        public string Tag { get; set; } = "";
+        [NotMapped]
+        public List<String> Tags = new List<String>();
+
+        [Column("Tag")]
+        [JsonIgnore]
+        public string JsonTags
+        {
+            get => JsonConvert.SerializeObject(Tags);
+            set => Tags = JsonConvert.DeserializeObject<List<String>>(value ?? "[]");
+        }
 
         [Column("Stats")]
         [JsonIgnore]

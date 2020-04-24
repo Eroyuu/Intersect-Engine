@@ -38,6 +38,8 @@ namespace Intersect.Editor.Forms.Editors
             this.lstNpcs = new System.Windows.Forms.TreeView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.grpGeneral = new DarkUI.Controls.DarkGroupBox();
+            this.lblTag = new System.Windows.Forms.Label();
+            this.txtTag = new DarkUI.Controls.DarkTextBox();
             this.btnAddFolder = new DarkUI.Controls.DarkButton();
             this.lblFolder = new System.Windows.Forms.Label();
             this.cmbFolder = new DarkUI.Controls.DarkComboBox();
@@ -156,8 +158,6 @@ namespace Intersect.Editor.Forms.Editors
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripItemUndo = new System.Windows.Forms.ToolStripButton();
             this.searchableDarkTreeView1 = new Intersect.Editor.Forms.Controls.SearchableDarkTreeView();
-            this.txtTag = new DarkUI.Controls.DarkTextBox();
-            this.lblTag = new System.Windows.Forms.Label();
             this.grpNpcs.SuspendLayout();
             this.grpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
@@ -284,6 +284,25 @@ namespace Intersect.Editor.Forms.Editors
             this.grpGeneral.TabIndex = 14;
             this.grpGeneral.TabStop = false;
             this.grpGeneral.Text = "General";
+            // 
+            // lblTag
+            // 
+            this.lblTag.AutoSize = true;
+            this.lblTag.Location = new System.Drawing.Point(72, 110);
+            this.lblTag.Name = "lblTag";
+            this.lblTag.Size = new System.Drawing.Size(29, 13);
+            this.lblTag.TabIndex = 69;
+            this.lblTag.Text = "Tag:";
+            // 
+            // txtTag
+            // 
+            this.txtTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.txtTag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtTag.Location = new System.Drawing.Point(106, 108);
+            this.txtTag.Name = "txtTag";
+            this.txtTag.Size = new System.Drawing.Size(89, 20);
+            this.txtTag.TabIndex = 68;
             // 
             // btnAddFolder
             // 
@@ -1938,26 +1957,6 @@ namespace Intersect.Editor.Forms.Editors
             this.searchableDarkTreeView1.Size = new System.Drawing.Size(240, 480);
             this.searchableDarkTreeView1.TabIndex = 46;
             this.searchableDarkTreeView1.Visible = false;
-            // 
-            // txtTag
-            // 
-            this.txtTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.txtTag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txtTag.Location = new System.Drawing.Point(106, 108);
-            this.txtTag.Name = "txtTag";
-            this.txtTag.Size = new System.Drawing.Size(89, 20);
-            this.txtTag.TabIndex = 68;
-            this.txtTag.TextChanged += new System.EventHandler(this.txtTag_TextChanged);
-            // 
-            // lblTag
-            // 
-            this.lblTag.AutoSize = true;
-            this.lblTag.Location = new System.Drawing.Point(72, 110);
-            this.lblTag.Name = "lblTag";
-            this.lblTag.Size = new System.Drawing.Size(29, 13);
-            this.lblTag.TabIndex = 69;
-            this.lblTag.Text = "Tag:";
             // 
             // FrmNpc
             // 

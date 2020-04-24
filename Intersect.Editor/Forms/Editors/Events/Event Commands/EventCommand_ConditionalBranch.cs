@@ -495,16 +495,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
                 case ConditionTypes.HasItemWTag:
                     grpHasItemWTag.Show();
                     cmbHasItemWTag.Items.Clear();
-                    List<string> tags = new List<string>();
-                    foreach (var p in ItemBase.ItemPairs)
-                    {
-                        string tag = ItemBase.Get(p.Key).Tag;
-                        if (tag != null && tag != "" && !tags.Contains(tag))
-                        {
-                            tags.Add(tag);
-                        }
-                    }
-                    cmbHasItemWTag.Items.AddRange(tags.OrderBy(t => t).ToArray());
+                    cmbHasItemWTag.Items.AddRange(ItemBase.ItemPairs.SelectMany(x => ItemBase.Get(x.Key).Tags).Distinct().OrderBy(t => t).ToArray());
 
                     break;
                 default:
@@ -519,25 +510,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             List<string> eqpTags = new List<string>();
             if (isItem)
             {
-                foreach (var p in ItemBase.ItemPairs)
-                {
-                    string tag = ItemBase.Get(p.Key).Tag;
-                    if (tag != null && tag != "" && !eqpTags.Contains(tag))
-                    {
-                        eqpTags.Add(tag);
-                    }
-                }
+                eqpTags = ItemBase.ItemPairs.SelectMany(x => ItemBase.Get(x.Key).Tags).Distinct().OrderBy(t => t).ToList();
             }
             else
             {
-                foreach (var p in NpcBase.ItemPairs)
-                {
-                    string tag = NpcBase.Get(p.Key).Tag;
-                    if (tag != null && tag != "" && !eqpTags.Contains(tag))
-                    {
-                        eqpTags.Add(tag);
-                    }
-                }
+                eqpTags = NpcBase.ItemPairs.SelectMany(x => ItemBase.Get(x.Key).Tags).Distinct().OrderBy(t => t).ToList();
             }
 
             cmbEquippedItemTag.Items.AddRange(eqpTags.OrderBy(t => t).ToArray());

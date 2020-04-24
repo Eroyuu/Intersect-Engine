@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using Intersect.Enums;
@@ -120,7 +121,16 @@ namespace Intersect.GameObjects
 
         public string Description { get; set; } = "";
 
-        public string Tag { get; set; } = "";
+        [NotMapped] 
+        public List<String> Tags = new List<String>();
+
+        [Column("Tag")]
+        [JsonIgnore]
+        public string JsonTags
+        {
+            get => JsonConvert.SerializeObject(Tags);
+            set => Tags = JsonConvert.DeserializeObject<List<String>>(value ?? "[]");
+        }
 
         public string FemalePaperdoll { get; set; } = "";
 

@@ -72,6 +72,17 @@ namespace Intersect.Editor.Forms.Editors
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+            try
+            {
+                mEditorItem.Tags.AddRange(txtTag.Text.Split(';'));
+            }
+            catch
+            {
+                MessageBox.Show(Strings.ItemEditor.tagparseerror, Strings.ItemEditor.tagparseerrortitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             //Send Changed items
             foreach (var item in mChanged)
             {
@@ -274,7 +285,7 @@ namespace Intersect.Editor.Forms.Editors
                 txtName.Text = mEditorItem.Name;
                 cmbFolder.Text = mEditorItem.Folder;
                 txtDesc.Text = mEditorItem.Description;
-                txtTag.Text = mEditorItem.Tag;
+                txtTag.Text = String.Join(";", mEditorItem.Tags);
                 cmbType.SelectedIndex = (int) mEditorItem.ItemType;
                 cmbPic.SelectedIndex = cmbPic.FindString(TextUtils.NullToNone(mEditorItem.Icon));
                 cmbEquipmentAnimation.SelectedIndex = AnimationBase.ListIndex(mEditorItem.EquipmentAnimationId) + 1;
@@ -494,11 +505,6 @@ namespace Intersect.Editor.Forms.Editors
         private void txtDesc_TextChanged(object sender, EventArgs e)
         {
             mEditorItem.Description = txtDesc.Text;
-        }
-
-        private void txtTag_TextChanged(object sender, EventArgs e)
-        {
-            mEditorItem.Tag = txtTag.Text;
         }
 
         private void cmbEquipmentSlot_SelectedIndexChanged(object sender, EventArgs e)

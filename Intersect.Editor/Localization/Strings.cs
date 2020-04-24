@@ -2945,6 +2945,10 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString weaponproperties = @"Weapon Properties";
 
+            public static LocalizedString tagparseerrortitle = @"Tag Parse Error";
+
+            public static LocalizedString tagparseerror = @"There was an issue with your Tags, they could not the split properly on ';'.\b\nPlease check your formatting!";
+
         }
 
         public struct LightEditor
@@ -3560,6 +3564,10 @@ Tick timer saved in server config.json.";
                 @"Are you sure you want to undo changes made to this npc? This action cannot be reverted!";
 
             public static LocalizedString undotitle = @"Undo Changes";
+
+            public static LocalizedString tagparseerrortitle = @"Tag Parse Error";
+
+            public static LocalizedString tagparseerror = @"There was an issue with your Tags, they could not the split properly on ';'.\b\nPlease check your formatting!";
 
         }
 

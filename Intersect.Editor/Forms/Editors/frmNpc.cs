@@ -66,6 +66,17 @@ namespace Intersect.Editor.Forms.Editors
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
+            try
+            {
+                mEditorItem.Tags.AddRange(txtTag.Text.Split(';'));
+            }
+            catch
+            {
+                MessageBox.Show(Strings.NpcEditor.tagparseerror, Strings.NpcEditor.tagparseerrortitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
             //Send Changed items
             foreach (var item in mChanged)
             {
@@ -239,7 +250,7 @@ namespace Intersect.Editor.Forms.Editors
                 pnlContainer.Show();
 
                 txtName.Text = mEditorItem.Name;
-                txtTag.Text = mEditorItem.Tag;
+                txtTag.Text = String.Join(";", mEditorItem.Tags);
                 cmbFolder.Text = mEditorItem.Folder;
                 cmbSprite.SelectedIndex = cmbSprite.FindString(TextUtils.NullToNone(mEditorItem.Sprite));
                 nudLevel.Value = mEditorItem.Level;
@@ -359,7 +370,7 @@ namespace Intersect.Editor.Forms.Editors
 
         private void txtTag_TextChanged(object sender, EventArgs e)
         {
-            mEditorItem.Tag = txtTag.Text;
+            
         }
 
         private void cmbSprite_SelectedIndexChanged(object sender, EventArgs e)

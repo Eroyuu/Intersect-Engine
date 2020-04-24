@@ -141,7 +141,7 @@ namespace Intersect.Server.Entities.Events
             foreach (var item in player.Items)
             {
                 ItemBase i = ItemBase.Get(item.ItemId);
-                if (i != null && i.Tag == condition.Tag)
+                if (i != null && i.Tags.Any(x => x.Equals(condition.Tag)))
                 {
                     cpt += player.CountItems(item.ItemId);
                     if (cpt >= condition.Quantity)
@@ -164,7 +164,7 @@ namespace Intersect.Server.Entities.Events
             {
                 if (player.Equipment[i] >= 0)
                 {
-                    if (ItemBase.Get(player.Items[player.Equipment[i]].ItemId).Tag == condition.Tag)
+                    if (ItemBase.Get(player.Items[player.Equipment[i]].ItemId).Tags.Any(x => x.Equals(condition.Tag)))
                     {
                         return true;
                     }
@@ -449,7 +449,7 @@ namespace Intersect.Server.Entities.Events
                     if (en.GetType() == typeof(Npc))
                     {
                         Npc npc = (Npc)en;
-                        if (npc.Base.Tag == condition.Tag)
+                        if (npc.Base.Tags.Any(x => x.Equals(condition.Tag)))
                         {
                             return true;
                         }
