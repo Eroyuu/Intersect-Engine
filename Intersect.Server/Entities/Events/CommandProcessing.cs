@@ -493,6 +493,19 @@ namespace Intersect.Server.Entities.Events
             PacketSender.SendEntityDataToProximity(player);
         }
 
+        //Change Hair Command
+        private static void ProcessCommand(
+            ChangeHairCommand command,
+            Player player,
+            Event instance,
+            CommandInstance stackInfo,
+            Stack<CommandInstance> callStack
+        )
+        {
+            player.CustomSpriteLayers[(int)Enums.CustomSpriteLayers.Hair] = command.Hair;
+            PacketSender.SendCustomSpriteLayersToProximity(player);
+        }
+
         //Change Gender Command
         private static void ProcessCommand(
             ChangeGenderCommand command,
@@ -1508,6 +1521,25 @@ namespace Intersect.Server.Entities.Events
                     value.Integer -= mod.Value;
 
                     break;
+                case Enums.VariableMods.Multiply:
+                    value.Integer *= mod.Value;
+
+                    break;
+                case Enums.VariableMods.Divide:
+                    if (mod.Value != 0)  //Idiot proofing divide by 0 LOL
+                    {
+                        value.Integer /= mod.Value;
+                    }
+
+                    break;
+                case Enums.VariableMods.LeftShift:
+                    value.Integer = value.Integer << (int)mod.Value;
+
+                    break;
+                case Enums.VariableMods.RightShift:
+                    value.Integer = value.Integer >> (int)mod.Value;
+
+                    break;
                 case Enums.VariableMods.Random:
                     //TODO: Fix - Random doesnt work with longs lolz
                     value.Integer = Randomization.Next((int) mod.Value, (int) mod.HighValue + 1);
@@ -1553,6 +1585,60 @@ namespace Intersect.Server.Entities.Events
                     if (ssv != null)
                     {
                         value.Integer -= ssv.Value.Integer;
+                    }
+
+                    break;
+                case Enums.VariableMods.MultiplyPlayerVar:
+                    value.Integer *= player.GetVariableValue(mod.DuplicateVariableId).Integer;
+
+                    break;
+                case Enums.VariableMods.MultiplyGlobalVar:
+                    var msv = ServerVariableBase.Get(mod.DuplicateVariableId);
+                    if (msv != null)
+                    {
+                        value.Integer *= msv.Value.Integer;
+                    }
+
+                    break;
+                case Enums.VariableMods.DividePlayerVar:
+                    if (player.GetVariableValue(mod.DuplicateVariableId).Integer != 0) //Idiot proofing divide by 0 LOL
+                    {
+                        value.Integer /= player.GetVariableValue(mod.DuplicateVariableId).Integer;
+                    }
+
+                    break;
+                case Enums.VariableMods.DivideGlobalVar:
+                    var dsv = ServerVariableBase.Get(mod.DuplicateVariableId);
+                    if (dsv != null)
+                    {
+                        if (dsv.Value != 0) //Idiot proofing divide by 0 LOL
+                        {
+                            value.Integer /= dsv.Value.Integer;
+                        }
+                    }
+
+                    break;
+                case Enums.VariableMods.LeftShiftPlayerVar:
+                    value.Integer = value.Integer << (int)player.GetVariableValue(mod.DuplicateVariableId).Integer;
+
+                    break;
+                case Enums.VariableMods.LeftShiftGlobalVar:
+                    var lhsv = ServerVariableBase.Get(mod.DuplicateVariableId);
+                    if (lhsv != null)
+                    {
+                        value.Integer = value.Integer << (int)lhsv.Value.Integer;
+                    }
+
+                    break;
+                case Enums.VariableMods.RightShiftPlayerVar:
+                    value.Integer = value.Integer >> (int)player.GetVariableValue(mod.DuplicateVariableId).Integer;
+
+                    break;
+                case Enums.VariableMods.RightShiftGlobalVar:
+                    var rhsv = ServerVariableBase.Get(mod.DuplicateVariableId);
+                    if (rhsv != null)
+                    {
+                        value.Integer = value.Integer >> (int)rhsv.Value.Integer;
                     }
 
                     break;

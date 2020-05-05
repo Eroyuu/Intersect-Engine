@@ -852,6 +852,10 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString undotitle = @"Undo Changes";
 
+            public static LocalizedString hairstyles = @"Hairstyles";
+
+            public static LocalizedString hair = @"Hair:";
+
         }
 
         public struct Colors
@@ -1056,6 +1060,10 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString undotitle = @"Undo Changes";
 
+            public static LocalizedString craftevent = @"Craft Event";
+
+            public static LocalizedString successrate = @"Success Rate";
+
         }
 
         public struct Directions
@@ -1083,7 +1091,7 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString conditioneditor = @"Add/Edit Condition";
 
-            public static LocalizedString conditionlist = @"Conditiond";
+            public static LocalizedString conditionlist = @"Conditions";
 
             public static LocalizedString conditionlists = @"Condition Lists";
 
@@ -1113,6 +1121,9 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString instructionsspell =
                 @"Below are condition lists. If conditions are met on any of the lists then the player can use cast the spell.";
+
+            public static LocalizedString instructionscraft =
+                @"Below are condition lists. If conditions are met on any of the lists then the player can craft the item.";
 
             public static LocalizedString listname = @"Desc:";
 
@@ -1161,6 +1172,19 @@ Tick timer saved in server config.json.";
             public static LocalizedString okay = @"Ok";
 
             public static LocalizedString title = @"Change Face";
+
+        }
+
+        public struct EventChangeHair
+        {
+
+            public static LocalizedString cancel = @"Cancel";
+
+            public static LocalizedString label = @"Hair:";
+
+            public static LocalizedString okay = @"Ok";
+
+            public static LocalizedString title = @"Change Hair";
 
         }
 
@@ -1423,6 +1447,8 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString despawnnpcs = @"Despawn NPCs";
 
+            public static LocalizedString dividevariable = @"Divide {00}";
+
             public static LocalizedString dupglobalvariable = @"Global Variable: {00}'s Value";
 
             public static LocalizedString dupplayervariable = @"Player Variable: {00}'s Value";
@@ -1434,6 +1460,22 @@ Tick timer saved in server config.json.";
             public static LocalizedString subtractglobalvariable = @"Subtract Global Variable: {00}'s Value";
 
             public static LocalizedString subtractplayervariable = @"Subtract Player Variable: {00}'s Value";
+
+            public static LocalizedString multiplyglobalvariable = @"Multiply Global Variable: {00}'s Value";
+
+            public static LocalizedString multiplyplayervariable = @"Multiply Player Variable: {00}'s Value";
+
+            public static LocalizedString divideglobalvariable = @"Divide Global Variable: {00}'s Value";
+
+            public static LocalizedString divideplayervariable = @"Divide Player Variable: {00}'s Value";
+
+            public static LocalizedString leftshiftglobalvariable = @"Left Bit Shift Global Variable: {00}'s Value";
+
+            public static LocalizedString leftshiftplayervariable = @"Left Bit Shift Player Variable: {00}'s Value";
+
+            public static LocalizedString rightshiftglobalvariable = @"Right Bit Shift Global Variable: {00}'s Value";
+
+            public static LocalizedString rightshiftplayervariable = @"Right Bit Shift Player Variable: {00}'s Value";
 
             public static LocalizedString enditemchange = @"End Item Change";
 
@@ -1481,6 +1523,8 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString label = @"Label: {00}";
 
+            public static LocalizedString leftshiftvariable = @"Left Bit Shift {00}";
+
             public static LocalizedString levelup = @"Level Up Player";
 
             public static LocalizedString linestart = @"@>";
@@ -1496,6 +1540,8 @@ Tick timer saved in server config.json.";
             public static LocalizedString moverouteevent = @"Event #{00}";
 
             public static LocalizedString moverouteplayer = @"Player";
+
+            public static LocalizedString multiplyvariable = @"Multiply {00}";
 
             public static LocalizedString notcommon = @"Cannot use this command in common events.";
 
@@ -1534,6 +1580,8 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString restorempby = @"Adjust Player MP ({00})";
 
+            public static LocalizedString rightshiftvariable = @"Right Bit Shift {00}";
+
             public static LocalizedString runcompletionevent = @"Running Completion Event";
 
             public static LocalizedString selfswitch = @"Set Self Switch {00} to {01}";
@@ -1553,6 +1601,8 @@ Tick timer saved in server config.json.";
             public static LocalizedString setclass = @"Set Class [{00}]";
 
             public static LocalizedString setface = @"Set Player Face to {00}";
+
+            public static LocalizedString sethair = @"Set Player Hair to {00}";
 
             public static LocalizedString setnamecolor = @"Set Player Name Color";
 
@@ -1688,6 +1738,7 @@ Tick timer saved in server config.json.";
                 {"changenamecolor", @"Change Name Color"},
                 {"inputvariable", @"Input Variable"},
                 {"changeplayerlabel", @"Change Player Label"},
+                {"changehair", @"Change Hair"},
             };
 
         }
@@ -2241,6 +2292,10 @@ Tick timer saved in server config.json.";
                 {"moveright", @"Move Right"},
                 {"movetowardplayer", @"Move Toward Player"},
                 {"moveup", @"Move Up"},
+                {"moveupleft", @"Move Up Left"},
+                {"moveupright", @"Move Up Right"},
+                {"movedownleft", @"Move Down Left"},
+                {"movedownright", @"Move Down Right"},
                 {"setanimation", @"Set Animation..."},
                 {"setattribute", @"Set Attribute"},
                 {"setgraphic", @"Set Graphic..."},
@@ -2469,9 +2524,15 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString numericadd = @"Add";
 
+            public static LocalizedString numericdivide = @"Divide";
+
+            public static LocalizedString numericleftshift = @"LShift";
+
             public static LocalizedString numericcloneglobalvariablevalue = @"Global Variable Value: ";
 
             public static LocalizedString numericcloneplayervariablevalue = @"Player Variable Value: ";
+
+            public static LocalizedString numericmultiply = @"Multiply";
 
             public static LocalizedString numericrandom = @"Random";
 
@@ -2480,6 +2541,8 @@ Tick timer saved in server config.json.";
             public static LocalizedString numericrandomlow = @"Low:";
 
             public static LocalizedString numericrandomdesc = @"Random Number:";
+
+            public static LocalizedString numericrightshift = @"RShift";
 
             public static LocalizedString numericset = @"Set";
 
@@ -2816,6 +2879,8 @@ Tick timer saved in server config.json.";
             public static LocalizedString projectile = @"Projectile:";
 
             public static LocalizedString requirements = @"Edit Usage Requirements";
+
+            public static LocalizedString craftrequirements = @"Edit Craft Requirements";
 
             public static LocalizedString save = @"Save";
 
